@@ -88,7 +88,7 @@
         .section-title h2 { font-size: 2.8rem; color: var(--primary-purple); margin-bottom: 1rem; }
         .divider { width: 4.5rem; height: 3px; background: var(--accent-gold); margin: 0 auto; }
 
-        /* Hero - Using studio.jpg */
+        /* Hero - studio.jpg */
         .hero { 
             min-height: 95vh; 
             display: flex; 
@@ -130,11 +130,11 @@
         .benefit-card h3 { font-size: 1.7rem; color: var(--primary-purple); margin-bottom: 1.2rem; }
 
         /* Carousel Containers */
-        .scroll-container { display: flex; gap: 1.5rem; overflow-x: auto; padding: 1.5rem 0.5rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+        .scroll-container { display: flex; gap: 2rem; overflow-x: auto; padding: 1.5rem 0.5rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
         .scroll-container::-webkit-scrollbar { height: 6px; }
         .scroll-container::-webkit-scrollbar-thumb { background: var(--primary-purple); border-radius: 10px; }
 
-        /* Recipe Card Styling - Updated Image cover */
+        /* Recipe Card Styling */
         .recipe-card { 
             flex: 0 0 25rem; 
             scroll-snap-align: start;
@@ -148,7 +148,7 @@
             flex-direction: column;
         }
         .recipe-card:hover { transform: translateY(-10px); border-color: var(--primary-purple); }
-        .recipe-img-container { width: 100%; height: 16rem; background: #fafafa; overflow: hidden; }
+        .recipe-img-container { width: 100%; height: 18rem; background: #fafafa; overflow: hidden; }
         .recipe-img { width: 100%; height: 100%; object-fit: cover; display: block; }
         
         .recipe-content { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; }
@@ -158,6 +158,55 @@
         .recipe-details { font-size: 1.1rem; color: var(--text-light); line-height: 1.6; }
         .recipe-details b { color: var(--text-dark); display: block; margin-top: 1rem; margin-bottom: 0.4rem; }
         .recipe-tip { margin-top: auto; padding-top: 1.2rem; border-top: 1px dashed var(--soft-purple); font-style: italic; color: var(--primary-purple); font-size: 1rem; }
+
+        /* Media Items - Testimonials Tall Version */
+        .media-item { 
+            flex: 0 0 30rem; 
+            scroll-snap-align: start; 
+            border-radius: 2.5rem; 
+            overflow: hidden; 
+            background: #000; 
+            height: 40rem; 
+            position: relative; 
+            box-shadow: 0 1.5rem 3.5rem rgba(0,0,0,0.15); 
+            border: 6px solid var(--white); 
+            cursor: pointer; 
+        }
+        .media-item video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+            background-color: #000;
+            position: relative;
+            z-index: 1;
+        }
+        .media-item img { width: 100%; height: 100%; object-fit: cover; }
+        .video-wrapper { position: relative; width: 100%; height: 100%; }
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4.5rem;
+            height: 4.5rem;
+            background: rgba(142, 68, 173, 0.85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            pointer-events: none;
+            opacity: 0.9;
+            z-index: 2;
+            transition: 0.3s;
+        }
+        .media-item.playing .play-overlay { opacity: 0; }
+        .media-item:hover .play-overlay {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--primary-purple);
+        }
 
         /* Feature List Style */
         .feature-list-styled { list-style: none; text-align: right; font-size: 1.6rem; }
@@ -169,79 +218,20 @@
         .divider-quote { text-align: center; padding: 8rem 15%; background-color: var(--soft-purple); margin: 5rem 0; border-top: 1px solid rgba(142,68,173,0.1); border-bottom: 1px solid rgba(142,68,173,0.1); }
         .divider-quote p { font-size: 3.2rem; line-height: 1.3; color: var(--primary-purple); font-weight: 800; max-width: 65rem; margin: 0 auto; }
 
-        /* Media Items - Updated for controls visibility */
-        .media-item {
-            flex: 0 0 300px;
-
-scroll-snap-align: start;
-
-border-radius: 20px;
-
-overflow: hidden;
-
-background: #eee;
-
-height: 380px;
-
-position: relative;
-
-box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-
-border: 2px solid var(--white);
-
-cursor: pointer;
-
-
-}
-
-.media-item video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block; /* IMPORTANT */
-    background-color: #000;
-}
-        .media-item img { width: 100%; height: 100%; object-fit: cover; }
-        .video-wrapper { position: relative; width: 100%; height: 100%; }
-        .play-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(142, 68, 173, 0.8);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 24px;
-    pointer-events: none;
-    opacity: 0.9;
-    z-index: 2;
-    transition: 0.3s;
-}
-        .media-item.playing .play-overlay { opacity: 0; }
-        .media-item:hover .play-overlay {
-    transform: translate(-50%, -50%) scale(1.1);
-    background: var(--primary-purple);
-}
-
-        /* Schedule Design */
-        .schedule-wrapper { background-color: #d1b3ff; border-radius: 3rem; padding: 4.5rem 2.5rem; margin: 5rem 0; position: relative; overflow-x: auto; }
-        .schedule-header-main { text-align: center; font-size: 5.5rem; color: #333; margin-bottom: 2.5rem; }
-        .schedule-grid-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.8rem; min-width: 65rem; }
-        .schedule-inner-logo { position: absolute; top: 1.8rem; left: 1.8rem; width: 5rem; height: 5rem; border-radius: 50%; object-fit: cover; }
-        .day-column { display: flex; flex-direction: column; gap: 1.2rem; }
-        .day-name { text-align: center; font-size: 2.4rem; color: #000; margin-bottom: 1.8rem; font-weight: 400; }
-        .lesson-card { border-radius: 2rem; padding: 1.8rem 0.8rem; text-align: center; min-height: 9rem; box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        /* Schedule Design - SIGHTLY REDUCED SIZE */
+        .schedule-wrapper { background-color: #d1b3ff; border-radius: 2.5rem; padding: 3rem 2rem; margin: 4rem 0; position: relative; overflow-x: auto; }
+        .schedule-header-main { text-align: center; font-size: 4.5rem; color: #333; margin-bottom: 2rem; }
+        .schedule-grid-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.6rem; min-width: 60rem; }
+        .schedule-inner-logo { position: absolute; top: 1.5rem; left: 1.5rem; width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; }
+        .day-column { display: flex; flex-direction: column; gap: 1rem; }
+        .day-name { text-align: center; font-size: 2.1rem; color: #000; margin-bottom: 1.4rem; font-weight: 400; }
+        .lesson-card { border-radius: 1.5rem; padding: 1.3rem 0.6rem; text-align: center; min-height: 7.5rem; box-shadow: 0 0.3rem 1rem rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .pink-strong { background-color: #e6a8ff; color: #000; }
         .pink-weak { background-color: #f1d5ff; color: #000; }
         .purple-strong { background-color: #be58f3; color: #fff; }
         .white-card { background-color: #ffffff; color: #000; }
-        .lesson-time { font-size: 2.4rem; font-weight: 800; display: block; line-height: 1; }
-        .lesson-name { font-size: 1.5rem; font-weight: 600; margin-top: 0.6rem; }
+        .lesson-time { font-size: 2.1rem; font-weight: 800; display: block; line-height: 1; }
+        .lesson-name { font-size: 1.3rem; font-weight: 600; margin-top: 0.5rem; }
 
         /* FAQ Styling */
         .faq-item { border-bottom: 1px solid var(--soft-purple); }
@@ -281,10 +271,12 @@ cursor: pointer;
         @media (max-width: 900px) { 
             section { padding: 4rem 5%; } 
             .nav-links { display: none; } 
-            .media-item, .recipe-card { flex: 0 0 88%; }
+            .media-item { flex: 0 0 92%; height: 32rem; }
+            .recipe-card { flex: 0 0 88%; }
             .studio-flex, .about-grid { grid-template-columns: 1fr; }
             .divider-quote p { font-size: 2rem; }
-            .schedule-header-main { font-size: 3.8rem; }
+            .schedule-header-main { font-size: 3.2rem; }
+            .schedule-grid-container { min-width: 55rem; }
         }
     </style>
 </head>
@@ -317,12 +309,12 @@ cursor: pointer;
         <!-- Navigation -->
         <nav>
             <div class="nav-right">
-                <a href="#" class="logo-text">A-FIT</a>
+                <a href="#home" class="logo-text">A-FIT</a>
                 <div class="nav-links">
                     <a href="#about-studio">על הסטודיו</a>
                     <a href="#benefits">למה אנחנו?</a>
                     <a href="#recipes">מתכונים</a>
-                    <a href="#testimonials">המלצות</a>
+                    <a href="#testimonials-title">המלצות</a>
                     <a href="#schedule">מערכת שעות</a>
                 </div>
             </div>
@@ -333,7 +325,7 @@ cursor: pointer;
         </nav>
 
         <!-- Hero Section -->
-        <header class="hero">
+        <header id="home" class="hero">
             <div class="hero-content">
                 <h1>סטודיו הכושר הבוטיקי לנשים בבת חפר – שמחזיר לך את הכוח, הביטחון והכיף להתמיד</h1>
                 <p style="font-size: 1.5rem; color: var(--text-light); margin-top: 1.2rem;">(גם אם ניסית כבר הכל והתייאשת בדרך)</p>
@@ -345,8 +337,12 @@ cursor: pointer;
 
         <!-- VSL Video Section -->
         <section id="vsl">
+            <div class="section-title">
+                <h2>מרגישה שהגיע הזמן לדאוג לעצמך?</h2>
+                <div class="divider"></div>
+            </div>
             <div class="vsl-frame">
-                <video controls preload="metadata"><source src="assets/videos/vsl-video.mp4#t=0.001" type="video/mp4"></video>
+                <video controls playsinline preload="auto"><source src="assets/videos/vsl-video.mp4#t=0.001" type="video/mp4"></video>
             </div>
             <p style="text-align: center; font-style: italic; max-width: 53rem; margin: 1.5rem auto; font-size: 1.4rem;">"המטרה שלי היא אחת: שתהיי מתאמנת שמתמידה, מרגישה חזקה ובטוחה בגוף שלה."</p>
         </section>
@@ -358,18 +354,34 @@ cursor: pointer;
                 <div class="benefit-card"><i class="fa-solid fa-heart-pulse"></i><h3>יחס אישי ומעקב</h3><p>בודקים הרשמות, שמים לב כשלא מגיעים ומתאימים פתרון אישי - כי את לא 'עוד מנוי'.</p></div>
                 <div class="benefit-card"><i class="fa-solid fa-calendar-check"></i><h3>גמישות אמיתית</h3><p>פספסת אימון? מזיזים איתך למועד אחר באותו חודש, כדי שלא תרגישי שנשרפת.</p></div>
                 <div class="benefit-card"><i class="fa-solid fa-star"></i><h3>אין מינימום מתאמנות</h3><p>גם אם יש רק מתאמנת אחת – האימון מתקיים ב-100%.</p></div>
-                <div class="benefit-card"><i class="fa-solid fa-people-group"></i><h3>קהילה ומוטיבציה</h3><p>טיפים קבועים והודעות מוטיבציה – גוף חזק מתחיל בתחושת שייכות.</p></div>
+                <div class="benefit-card"><i class="fa-solid fa-people-group"></i><h3>קהילה ומוטיבציה</h3><p>טיפים קבועים והודעות מוטיבציה – גוף חזק מתחיל בשייכות.</p></div>
                 <div class="benefit-card"><i class="fa-solid fa-user-shield"></i><h3>התאמה אישית</h3><p>התאמות תרגילים לפי פציעות ומגבלות כדי שתתחזקי בבטחה ובנחת.</p></div>
             </div>
 
-            <div class="section-title" style="margin-top: 6.5rem; margin-bottom: 1.5rem;">
+            <div class="section-title" id="testimonials-title" style="margin-top: 6.5rem; margin-bottom: 1.5rem;">
                 <h3 class="serif" style="font-size: 2.8rem; color: var(--primary-purple); font-weight: 700;">המתאמנות שלנו ממליצות</h3>
             </div>
 
+            <!-- Testimonial Videos -->
             <div class="scroll-container">
-                <div class="media-item"><div class="video-wrapper"><div class="play-overlay"><i class="fa-solid fa-play"></i></div><video controls preload="metadata"><source src="assets/videos/test-1.mp4#t=0.001" type="video/mp4"></video></div></div>
-                <div class="media-item"><div class="video-wrapper"><div class="play-overlay"><i class="fa-solid fa-play"></i></div><video controls preload="metadata"><source src="assets/videos/test-2.mp4#t=0.001" type="video/mp4"></video></div></div>
-                <div class="media-item"><div class="video-wrapper"><div class="play-overlay"><i class="fa-solid fa-play"></i></div><video controls preload="metadata"><source src="assets/videos/test-3.mp4#t=0.001" type="video/mp4"></video></div></div>
+                <div class="media-item">
+                    <div class="video-wrapper">
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                        <video controls playsinline preload="metadata"><source src="assets/videos/test-1.mp4#t=0.001" type="video/mp4"></video>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="video-wrapper">
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                        <video controls playsinline preload="metadata"><source src="assets/videos/test-2.mp4#t=0.001" type="video/mp4"></video>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="video-wrapper">
+                        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                        <video controls playsinline preload="auto"><source src="assets/videos/test-3.mp4#t=0.001" type="video/mp4"></video>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -398,7 +410,7 @@ cursor: pointer;
                     <li><i class="fa-solid fa-circle-check"></i> <span><b>קבוצות קטנות עם יחס אישי</b> – מאמנת שמכירה את השם והמטרות שלך.</span></li>
                     <li><i class="fa-solid fa-circle-check"></i> <span><b>אימונים מגוונים לאורך החודש</b> – כוח, סיבולת, בטן, יציבה ויוגה.</span></li>
                     <li><i class="fa-solid fa-circle-check"></i> <span><b>ליווי ומעקב</b> – רישום והתאמות כדי שלא תיעלמי באמצע הדרך.</span></li>
-                    <li><i class="fa-solid fa-circle-check"></i> <span><b>אפשרות לליווי תזונתי</b> – למי שרוצה לחבר בין אימונים לתזונה.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i> <span><b>אפשרות לליווי תזונתי</b> – לחיבור בין אימונים לתזונה.</span></li>
                     <li><i class="fa-solid fa-circle-check"></i> <span><b>קהילה של נשים כמוך</b> – אמהות ונשים עסוקות שרוצות שעה לעצמן.</span></li>
                 </ul>
                 <img src="assets/images/studio.jpg" onerror="this.src='http://googleusercontent.com/image_collection/image_retrieval/9298417350809866144'" alt="סטודיו A-FIT" style="width: 100%; border-radius: 2.2rem; box-shadow: 1.5rem 1.5rem 0 var(--soft-purple);">
@@ -410,8 +422,8 @@ cursor: pointer;
             <p>"המטרה של A-FIT היא לא רק 'אימונים'. המטרה היא שתהיה לך מסגרת ברורה, נעימה ומחזיקה, שתגרום לך לרצות להגיע שוב ושוב – עד שאת מרגישה חזקה, קלה ובטוחה בגוף שלך."</p>
         </div>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials">
+        <!-- WhatsApp Testimonials Section -->
+        <section id="testimonials-wa">
             <div class="section-title"><h2>מה המתאמנות שלנו אומרות?</h2><div class="divider"></div></div>
             <div class="scroll-container">
                 <div class="media-item" style="height: 32rem;"><img src="assets/images/wa-1.jpg" alt="WhatsApp"></div>
@@ -470,8 +482,6 @@ cursor: pointer;
                         <div class="recipe-details">
                             <b>מצרכים:</b>
                             200 גרם גבינה לבנה 5%, 2 כפיות קקאו, 1 כף ממתיק (סילאן לייט / מייפל / סטיביה), 1/2 כפית תמצית וניל.
-                            <b>הכנה:</b>
-                            מערבבים הכל היטב עד מרקם חלק ואחיד. מכניסים למקרר ל-30 דקות להתייצבות.
                         </div>
                         <p class="recipe-tip">💡 טיפ: אפשר להוסיף מעל תותים או שבבי שוקולד מריר.</p>
                     </div>
@@ -490,8 +500,6 @@ cursor: pointer;
                         <div class="recipe-details">
                             <b>מצרכים:</b>
                             200 גרם יוגורט 0%-3%, 1/2 כוס פירות יער / תותים, 1 כף גרנולה דלת סוכר, 1 כפית דבש או סילאן (לא חובה).
-                            <b>הכנה:</b>
-                            מסדרים בשכבות: יוגורט ← פירות ← גרנולה ← שוב יוגורט. מגישים קר.
                         </div>
                         <p class="recipe-tip">📸 טיפ: נראה מעולה בצנצנת שקופה לאתר!</p>
                     </div>
@@ -504,14 +512,12 @@ cursor: pointer;
                     </div>
                     <div class="recipe-content">
                         <div class="recipe-header">
-                            <h4 class="recipe-title">🥒 לביבות קישואים אפויות</h4>
+                            <h4 class="recipe-title">🥒 לביבות קישואים</h4>
                             <span class="recipe-tag">כ-80 קלוריות ליחידה</span>
                         </div>
                         <div class="recipe-details">
                             <b>מצרכים:</b>
                             2 קישואים מגורדים וסחוטים, ביצה אחת, 2 כפות קמח שיבולת שועל, מלח, פלפל, שום כתוש.
-                            <b>הכנה:</b>
-                            מערבבים הכל, יוצרים לביבות קטנות. אופים ב-180 מעלות כ-20 דקות.
                         </div>
                         <p class="recipe-tip">💡 טיפ: להגיש עם יוגורט שום בצד.</p>
                     </div>
@@ -529,9 +535,7 @@ cursor: pointer;
                         </div>
                         <div class="recipe-details">
                             <b>מצרכים:</b>
-                            3 פלפלים, 200 גרם חזה עוף טחון, 1/2 כוס אורז מבושל, בצל קצוץ, מלח, פלפל, פפריקה.
-                            <b>הכנה:</b>
-                            מערבבים את המילוי, ממלאים את הפלפלים. אופים מכוסה כ-35 דקות ב-180 מעלות.
+                            3 פלפלים, 200 גרם חזה עוף טחון, 1/2 כוס אורז מבושל, בצל קצוץ, פפריקה.
                         </div>
                         <p class="recipe-tip">💡 טיפ: אפשר להוסיף רוטב עגבניות קל מעל.</p>
                     </div>
@@ -541,16 +545,15 @@ cursor: pointer;
 
         <!-- Main Gallery -->
         <section id="gallery">
-            <div class="section-title"><h2>גלריית תמונות וסרטונים</h2><div class="divider"></div></div>
+            <div class="section-title"><h2>גלריית תמונות</h2><div class="divider"></div></div>
             <div class="scroll-container">
-                <div class="media-item"><img src="assets/images/g1.jpg" alt="A-FIT"></div>
-                <div class="media-item"><img src="assets/images/g2.jpg" alt="A-FIT"></div>
-                <div class="media-item"><div class="video-wrapper"><div class="play-overlay"><i class="fa-solid fa-play"></i></div><video controls preload="metadata"><source src="assets/videos/v1.mp4#t=0.001" type="video/mp4"></video></div></div>
-                <div class="media-item"><img src="assets/images/g3.jpg" alt="A-FIT"></div>
+                <div class="media-item" style="height: 25rem;"><img src="assets/images/g1.jpg" alt="A-FIT"></div>
+                <div class="media-item" style="height: 25rem;"><img src="assets/images/g2.jpg" alt="A-FIT"></div>
+                <div class="media-item" style="height: 25rem;"><img src="assets/images/g3.jpg" alt="A-FIT"></div>
             </div>
         </section>
 
-        <!-- Schedule Section -->
+        <!-- Schedule Section - UPDATED SIZING -->
         <section id="schedule" class="schedule-wrapper">
             <img src="assets/images/logo.jpg" onerror="this.src='http://googleusercontent.com/image_collection/image_retrieval/IMG-20260323-WA0040.jpg'" class="schedule-inner-logo" alt="Logo">
             <h2 class="schedule-header-main">מערכת שעות</h2>
@@ -572,14 +575,14 @@ cursor: pointer;
                 <div class="day-column">
                     <div class="day-name">שלישי</div>
                     <div class="lesson-card pink-strong"><span class="lesson-time">7:30</span><span class="lesson-name">פונקציונאלי</span></div>
-                    <div style="min-height:9rem"></div>
+                    <div style="min-height:7.5rem"></div>
                     <div class="lesson-card pink-strong"><span class="lesson-time">18:00</span><span class="lesson-name">פונקציונאלי</span></div>
                     <div class="lesson-card pink-weak"><span class="lesson-time">19:00</span><span class="lesson-name">כוח</span></div>
                 </div>
                 <div class="day-column">
                     <div class="day-name">רביעי</div>
                     <div class="lesson-card pink-strong"><span class="lesson-time">8:30</span><span class="lesson-name">פונקציונאלי</span></div>
-                    <div style="min-height:9rem"></div>
+                    <div style="min-height:7.5rem"></div>
                     <div class="lesson-card pink-strong"><span class="lesson-time">19:00</span><span class="lesson-name">פונקציונאלי</span></div>
                     <div class="lesson-card purple-strong"><span class="lesson-time">20:00</span><span class="lesson-name">ישבן רגליים</span></div>
                 </div>
@@ -602,19 +605,19 @@ cursor: pointer;
         <section id="faq">
             <div class="section-title"><h2>שאלות נפוצות</h2><div class="divider"></div></div>
             <div style="max-width: 58rem; margin: 0 auto;">
-                <div class="faq-item"><div class="faq-q">אני לא בכושר בכלל. זה מתאים גם לי? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">בוודאי. רוב הנשים מתחילות מ"אפס". האימונים בקבוצות קטנות מאפשרים התאמה אישית.</div></div>
-                <div class="faq-item"><div class="faq-q">מה גודל הקבוצות בסטודיו? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">הקבוצות קטנות ואינטימיות ליחס אישי לאורך כל האימון.</div></div>
-                <div class="faq-item"><div class="faq-q">אם יש לי כאבי גב/ברכיים, אני עדיין יכולה להתאמן? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">כן. לפני תחילת הדרך את משתפת אותי במצב הבריאותי ואני מתאימה לך אופציות בטוחות.</div></div>
-                <div class="faq-item"><div class="faq-q">אני עובדת והלו"ז שלי מאוד עמוס. זה ריאלי? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">דווקא בגלל לו"ז עמוס את חייבת יתד שבו את דואגת לעצמך. המטרה שהאימונים יתאימו לחיים שלך.</div></div>
+                <div class="faq-item"><div class="faq-q">אני לא בכושר בכלל. זה מתאים גם לי? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">בוודאי. רוב הנשים שמגיעות ל-A-FIT מתחילות מ"אפס" או אחרי תקופה ארוכה בלי פעילות גופנית. האימונים בקבוצות קטנות מאפשרים התאמה אישית.</div></div>
+                <div class="faq-item"><div class="faq-q">מה גודל הקבוצות בסטודיו? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">הקבוצות קטנות ואינטימיות ליחס אישי מקסימלי לאורך כל האימון.</div></div>
+                <div class="faq-item"><div class="faq-q">אם יש לי כאבי גב/ברכיים, אני עדיין יכולה להתאמן? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">כן. לפני תחילת הדרך את משתפת אותי במצב הבריאותי ונתאים לך אופציות בטוחות.</div></div>
+                <div class="faq-item"><div class="faq-q">אני עובדת והלו"ז שלי מאוד עמוס. זה ריאלי? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">המטרה שהאימונים יתאימו לחיים שלך. הסטודיו מיועד לנשים עסוקות.</div></div>
                 <div class="faq-item"><div class="faq-q">יש התחייבות למנוי ארוך טווח? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">לא חייבים להתחייב לשנה. בונים שגרה שמתאימה לך במנוי רץ.</div></div>
-                <div class="faq-item"><div class="faq-q">אני מתלבטת אם זה בשבילי או עדיף מכון רגיל. מה ההבדל? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">ב-A-FIT את לא "עוד מנויה". זה סטודיו בוטיק עם ליווי צמוד וקהילה תומכת.</div></div>
+                <div class="faq-item"><div class="faq-q">אני מתלבטת אם זה בשבילי או שמא עדיף לי מכון כושר רגיל. מה ההבדל? <i class="fa-solid fa-chevron-down"></i></div><div class="faq-a">זה סטודיו בוטיק עם ליווי צמוד, יחס אישי וקהילה תומכת.</div></div>
             </div>
         </section>
 
         <!-- Final CTA Form -->
-        <section class="form-section">
+        <section id="contact-final" class="form-section">
             <div class="form-container">
-                <h2 class="serif" style="font-size: 2.5rem; color: var(--primary-purple);">זה הרגע שלך לקבל החלטה אחראית</h2>
+                <h2 class="serif" style="font-size: 2.5rem; color: var(--primary-purple);">זה הרגע שלך לקבל החלטה</h2>
                 <p style="margin-bottom: 2.2rem; font-size: 1.3rem;">בואי נתחיל ביחד והפעם את תתמידי! השאירי פרטים ואחזור אלייך</p>
                 <form class="whatsappForm">
                     <div class="input-group"><div class="input-wrapper"><input type="text" placeholder="שם מלא" required></div></div>
@@ -639,9 +642,27 @@ cursor: pointer;
     <div id="accModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="document.getElementById('accModal').style.display='none'">&times;</span>
-            <h2 style="color: var(--primary-purple); margin-bottom: 20px;">הצהרת נגישות</h2>
-            <p>אנו ב-A-FIT רואים חשיבות רבה במתן שירות שוויוני לכלל הגולשות והלקוחות. האתר הונגש ברמת AA.</p>
-            <p>לפניות: 052-6619528.</p>
+            <h2 style="color: var(--primary-purple); margin-bottom: 20px; font-family: 'Bellefair', serif;">הצהרת נגישות - A-FIT Studio</h2>
+            <div style="font-size: 1.1rem; line-height: 1.6; color: var(--text-dark); text-align: right;">
+                <p style="margin-bottom: 15px;">אנו ב-A-FIT רואים חשיבות רבה במתן שירות שוויוני ונגיש לכלל הגולשות והלקוחות שלנו. האתר הונגש בהתאם להנחיות הנגישות בתקן הישראלי 5568 ברמה AA, המבוסס על הנחיות WCAG 2.0 הבינלאומיות.</p>
+                
+                <h3 style="font-size: 1.3rem; color: var(--primary-purple); margin-bottom: 10px;">פעולות הנגישות שבוצעו באתר:</h3>
+                <ul style="margin-right: 20px; margin-bottom: 20px; list-style-type: disc;">
+                    <li><b>ניווט מקלדת:</b> האתר מותאם לשימוש מלא ללא עכבר באמצעות מקשי ה-Tab וה-Enter.</li>
+                    <li><b>ניגודיות וצבעים:</b> הקפדה על ניגודיות גבוהה בין הטקסט לרקע ואפשרות למצבי ניגודיות גבוהה.</li>
+                    <li><b>תמיכה בקורא מסך:</b> קוד סמנטי המאפשר לתוכנות הקראה להבין את מבנה הדף.</li>
+                    <li><b>כלי עזר מובנים:</b> תפריט נגישות המאפשר הגדלה/הקטנה של טקסט, שינוי גופן, סמן קריאה והקראה קולית בעברית.</li>
+                    <li><b>עיצוב רספונסיבי:</b> התאמה מלאה למובייל, טאבלט ומחשב.</li>
+                </ul>
+
+                <h3 style="font-size: 1.3rem; color: var(--primary-purple); margin-bottom: 10px;">פרטי רכז הנגישות:</h3>
+                <p>במידה ונתקלת בקושי בגלישה, נשמח לעמוד לרשותך ולתקן בהקדם.</p>
+                <ul style="list-style: none; margin-top: 10px;">
+                    <li>• <b>שם:</b> אפיק</li>
+                    <li>• <b>טלפון:</b> 052-6619528</li>
+                </ul>
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">תאריך עדכון ההצהרה: מרץ 2024</p>
+            </div>
         </div>
     </div>
 
@@ -675,14 +696,7 @@ cursor: pointer;
         loadVoices();
 
         function toggleAccMenu() { document.getElementById('acc-menu').classList.toggle('active'); }
-
-        function adjustFontSize(val) {
-            currentMultiplier += val;
-            if (currentMultiplier < 0.7) currentMultiplier = 0.7;
-            if (currentMultiplier > 2.5) currentMultiplier = 2.5;
-            document.documentElement.style.setProperty('--font-multiplier', currentMultiplier);
-        }
-
+        function adjustFontSize(val) { currentMultiplier += val; if (currentMultiplier < 0.7) currentMultiplier = 0.7; if (currentMultiplier > 2.5) currentMultiplier = 2.5; document.documentElement.style.setProperty('--font-multiplier', currentMultiplier); }
         function resetFontSize() { currentMultiplier = 1; document.documentElement.style.setProperty('--font-multiplier', 1); }
         function toggleFontType() { document.body.classList.toggle('alt-font'); }
         function toggleContrast() { document.body.classList.toggle('high-contrast'); }
@@ -697,10 +711,9 @@ cursor: pointer;
         }
 
         function resetAcc() { 
-            resetFontSize();
+            resetFontSize(); 
             document.body.classList.remove('high-contrast', 'grayscale', 'underline-links', 'alt-font'); 
             if (isReadingActive) toggleReadingGuide();
-            document.querySelectorAll('.acc-opt').forEach(opt => opt.classList.remove('active'));
         }
 
         document.addEventListener('mousemove', (e) => {
@@ -708,12 +721,9 @@ cursor: pointer;
             const guide = document.getElementById('reading-guide');
             guide.style.top = (e.clientY - 2) + 'px';
             const element = document.elementFromPoint(e.clientX, e.clientY);
-            if (element) {
-                const text = (element.innerText || "").trim();
-                if (text && text.length > 1 && text !== lastReadText) {
-                    if (['P', 'H1', 'H2', 'H3', 'H4', 'LI', 'SPAN', 'B', 'BUTTON', 'A'].includes(element.tagName)) {
-                        speakText(text);
-                    }
+            if (element && (element.innerText || "").trim().length > 1 && element.innerText !== lastReadText) {
+                if (['P', 'H1', 'H2', 'H3', 'H4', 'LI', 'SPAN', 'B', 'BUTTON', 'A'].includes(element.tagName)) {
+                    speakText(element.innerText);
                 }
             }
         });
@@ -728,14 +738,10 @@ cursor: pointer;
             window.speechSynthesis.speak(utterance);
         }
 
-        // Handle Play Video Overlay - Updated
+        // Handle Play Video Overlay
         document.querySelectorAll('.media-item video').forEach(video => {
-            video.addEventListener('play', function() {
-                this.closest('.media-item').classList.add('playing');
-            });
-            video.addEventListener('pause', function() {
-                this.closest('.media-item').classList.remove('playing');
-            });
+            video.addEventListener('play', function() { this.closest('.media-item').classList.add('playing'); });
+            video.addEventListener('pause', function() { this.closest('.media-item').classList.remove('playing'); });
         });
 
         window.onclick = function(event) { if (event.target == document.getElementById('accModal')) { document.getElementById('accModal').style.display = "none"; } }
