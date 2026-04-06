@@ -4,16 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A-FIT - סטודיו בוטיק לנשים | אפיק</title>
-    
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-529829039"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-529829039');
+    </script>
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="A-FIT - סטודיו כושר בוטיקי לנשים בבת חפר. אימוני כוח, פונקציונאלי ויוגה בקבוצות קטנות עם יחס אישי מאפיק.">
+    <meta name="keywords" content="כושר בבת חפר, סטודיו לנשים, אימון פונקציונלי, יוגה בת חפר, אפיק כושר">
+       
+    <!-- Video Schema for Google Indexing -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "A-FIT סטודיו בוטיק - אימון היכרות",
+      "description": "הכירי את הסטודיו של אפיק בבת חפר - מקום לנשים להתחזק ולהתמיד.",
+      "thumbnailUrl": "https://a-fit.co.il/assets/images/studio.jpg",
+      "uploadDate": "2024-03-24",
+      "contentUrl": "https://a-fit.co.il/assets/videos/vsl-video.mp4"
+    }
+    </script>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Bellefair&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -37,8 +58,8 @@
 
         /* Prevent Brand Name Breaking */
         .brand-name {
-            white-space: nowrap;
-            display: inline-block;
+            white-space: nowrap !important;
+            display: inline-block !important;
         }
 
         /* Accessibility States */
@@ -61,6 +82,28 @@
             left: 0;
             transition: top 0.1s ease-out;
         }
+
+        /* Cookie Consent Banner */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            padding: 1.2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            z-index: 100000;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid var(--soft-purple);
+        }
+        #cookie-banner p { font-size: 0.9rem; color: var(--text-dark); margin: 0; line-height: 1.4; }
+        .cookie-btn { padding: 0.5rem 1.2rem; background: var(--primary-purple); color: white; border-radius: 2rem; cursor: pointer; font-weight: 700; white-space: nowrap; font-size: 0.85rem; }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -213,25 +256,6 @@
             display: block; 
         }
         .video-wrapper { position: relative; width: 100%; height: 100%; background: transparent; }
-        .play-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 4.5rem;
-            height: 4.5rem;
-            background: rgba(142, 68, 173, 0.85);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            pointer-events: none;
-            opacity: 0.9;
-            z-index: 2;
-            transition: 0.3s;
-        }
         .media-item.playing .play-overlay { opacity: 0; }
 
         /* Feature List Style */
@@ -252,7 +276,7 @@
             text-align: center; 
         }
         .schedule-image-container { 
-            max-width: 1550px;
+            max-width: 1500px;
             margin: 0 auto; 
             box-shadow: 0 1rem 3rem rgba(142, 68, 173, 0.08);
             border-radius: 1.5rem;
@@ -278,6 +302,10 @@
         .input-group { margin-bottom: 1.6rem; text-align: right; }
         .input-wrapper input { width: 100%; padding: 1.2rem 1.8rem; border: 2px solid #f1f1f1; border-radius: 1.5rem; font-size: 1.2rem; font-family: inherit; }
         .submit-btn { width: 100%; background: linear-gradient(135deg, var(--primary-purple) 0%, #6c5ce7 100%); color: white; padding: 1.2rem; border: none; border-radius: 1.5rem; font-size: 1.4rem; font-weight: 700; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.8rem; }
+        
+        /* Legal Consent Text */
+        .legal-consent { font-size: 0.95rem; color: var(--text-light); margin-top: 1.2rem; text-align: center; }
+        .legal-consent a { color: var(--primary-purple); text-decoration: underline; cursor: pointer; font-weight: 600; }
 
         /* Accessibility Widget */
         #acc-widget { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; }
@@ -291,6 +319,12 @@
 
         .font-controls-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem; padding: 0.4rem 0; }
         .font-btn { border: 2px solid #eee; background: white; padding: 0.8rem; border-radius: 1rem; cursor: pointer; font-size: 1.2rem; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
+
+        /* Legal Tabs Styling */
+        .legal-tabs { display: flex; gap: 0.5rem; border-bottom: 2px solid var(--soft-purple); margin-bottom: 2rem; overflow-x: auto; padding-bottom: 0.5rem; }
+        .legal-tabs::-webkit-scrollbar { height: 4px; }
+        .tab-btn { padding: 0.8rem 1.2rem; border: none; background: none; font-weight: 700; color: var(--text-light); cursor: pointer; transition: var(--transition); white-space: nowrap; font-family: inherit; font-size: 1rem; }
+        .tab-btn.active { color: var(--primary-purple); border-bottom: 3px solid var(--primary-purple); }
 
         /* Modal - SCROLLABLE */
         .modal { 
@@ -320,7 +354,8 @@
         .close-modal { position: absolute; top: 1rem; left: 1.5rem; font-size: 2.2rem; cursor: pointer; color: #999; z-index: 10; }
 
         footer { background: var(--text-dark); color: #fff; padding: 5rem 10%; text-align: center; }
-        .accessibility-link { color: #fff; text-decoration: underline; font-size: 15px; margin-top: 1.5rem; display: inline-block; cursor: pointer; opacity: 0.8; }
+        .footer-links { margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; opacity: 0.8; font-size: 0.95rem; }
+        .footer-link { color: #fff; text-decoration: underline; cursor: pointer; transition: var(--transition); }
 
         /* Mobile Fixes */
         @media (max-width: 1024px) {
@@ -347,6 +382,7 @@
             .form-section { padding: 4rem 5%; }
             .form-container { padding: 2.5rem 1.5rem; width: 100%; max-width: 100%; }
             
+            #cookie-banner { bottom: 10px; flex-direction: column; text-align: center; }
             .modal-content { padding: 2.5rem 1.5rem; margin: 10px auto; }
         }
 
@@ -361,6 +397,12 @@
 <body>
 
     <div id="reading-guide"></div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner">
+        <p>האתר של <span class="brand-name">A-FIT</span> משתמש בקוקיז כדי להבטיח לך את החוויה הטובה ביותר ולמטרות סטטיסטיקה.</p>
+        <div onclick="acceptCookies()" class="cookie-btn">אני מאשרת</div>
+    </div>
 
     <!-- Accessibility Widget -->
     <div id="acc-widget">
@@ -421,7 +463,9 @@
                 <div class="divider"></div>
             </div>
             <div class="vsl-frame">
-                <video controls playsinline preload="auto"><source src="assets/videos/vsl-video.mp4" type="video/mp4"></video>
+                <video controls playsinline preload="metadata">
+                    <source src="assets/videos/vsl-video.mp4#t=0.001" type="video/mp4">
+                </video>
             </div>
             <p style="text-align: center; font-style: italic; max-width: 53rem; margin: 1.5rem auto; font-size: 1.4rem;">"המטרה שלי היא אחת: שתהיי מתאמנת שמתמידה, מרגישה חזקה ובטוחה בגוף שלה."</p>
         </section>
@@ -443,9 +487,9 @@
 
             <!-- Testimonial Videos -->
             <div class="scroll-container">
-                <div class="media-item"><video controls playsinline preload="metadata"><source src="assets/videos/test-1.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><video controls playsinline preload="metadata"><source src="assets/videos/test-2.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><video controls playsinline preload="auto"><source src="assets/videos/test-3.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><div class="video-wrapper"><div class="play-overlay"><i class="fa-solid fa-play"></i></div><video controls playsinline preload="metadata"><source src="assets/videos/test-1.mp4#t=0.001" type="video/mp4"></video></div></div>
+                <div class="media-item"><div class="video-wrapper"><div class="play-overlay"><i class="fa-solid fa-play"></i></div><video controls playsinline preload="metadata"><source src="assets/videos/test-2.mp4#t=0.001" type="video/mp4"></video></div></div>
+                <div class="media-item"><div class="video-wrapper"><div class="play-overlay"><i class="fa-solid fa-play"></i></div><video controls playsinline preload="metadata"><source src="assets/videos/test-3.mp4#t=0.001" type="video/mp4"></video></div></div>
             </div>
         </section>
 
@@ -459,13 +503,14 @@
                     <div class="input-group"><div class="input-wrapper"><input type="tel" placeholder="טלפון" required></div></div>
                     <button type="submit" class="submit-btn">לאימון היכרות השאירי פרטים <i class="fa-brands fa-whatsapp"></i></button>
                 </form>
+                <p class="legal-consent">בלחיצה על הכפתור אני מאשרת את <a onclick="openLegal('terms')">תקנון האתר</a> ו<a onclick="openLegal('health')">הצהרת הבריאות</a></p>
             </div>
         </section>
 
         <!-- 3. About Studio Section -->
         <section id="about-studio">
             <div class="section-title">
-                <h2>מה מחכה לך כשאת נכנסת ל-<span class="brand-name">A-FIT?</span></h2>
+                <h2>מה מחכה לך כשאת נכנסת ל-<span class="brand-name">A-FIT</span>?</h2>
                 <div class="divider"></div>
             </div>
             <div class="studio-flex" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;">
@@ -507,10 +552,11 @@
                     <div class="input-group"><div class="input-wrapper"><input type="tel" placeholder="טלפון" required></div></div>
                     <button type="submit" class="submit-btn">שלחי פרטים בוואטסאפ <i class="fa-brands fa-whatsapp"></i></button>
                 </form>
+                <p class="legal-consent">בלחיצה על הכפתור אני מאשרת את <a onclick="openLegal('terms')">תקנון האתר</a> ו<a onclick="openLegal('health')">הצהרת הבריאות</a></p>
             </div>
         </section>
 
-        <!-- About Me Section - RESTORED FULL CONTENT -->
+        <!-- About Me Section -->
         <section id="about-me">
             <div class="about-grid" style="display: grid; grid-template-columns: 24rem 1fr; gap: 4.5rem; align-items: center;">
                 <img src="assets/images/me.jpg" alt="אפיק" style="width: 100%; border-radius: 2.5rem; box-shadow: 2rem 2rem 0 var(--soft-purple);">
@@ -525,7 +571,7 @@
             </div>
         </section>
 
-        <!-- Recipes Section - FULL DESIGN -->
+        <!-- Recipes Section -->
         <section id="recipes" style="background-color: #fafafa;">
             <div class="section-title">
                 <h3 class="serif" style="font-size: 3rem; color: var(--primary-purple);">מתכונים בריאים:</h3>
@@ -575,21 +621,22 @@
                 <div class="media-item"><img src="assets/images/g1.jpg" alt="A-FIT"></div>
                 <div class="media-item"><img src="assets/images/g2.jpg" alt="A-FIT"></div>
                 <div class="media-item"><img src="assets/images/g3.jpg" alt="A-FIT"></div>
-                <div class="media-item"><video controls playsinline preload="metadata"><source src="assets/videos/G1.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><video controls playsinline preload="metadata"><source src="assets/videos/G2.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><video controls playsinline preload="metadata"><source src="assets/videos/G3.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><video controls playsinline preload="metadata"><source src="assets/videos/G4.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><video controls playsinline muted class="force-silent" preload="metadata"><source src="assets/videos/G1.mp4#t=0.001" type="video/mp4"></video></div>
+                <div class="media-item"><video controls playsinline muted class="force-silent" preload="metadata"><source src="assets/videos/G2.mp4#t=0.001" type="video/mp4"></video></div>
+                <div class="media-item"><video controls playsinline muted class="force-silent" preload="metadata"><source src="assets/videos/G3.mp4#t=0.001" type="video/mp4"></video></div>
+                <div class="media-item"><video controls playsinline muted class="force-silent" preload="metadata"><source src="assets/videos/G4.mp4#t=0.001" type="video/mp4"></video></div>
             </div>
         </section>
 
         <!-- Schedule Section -->
         <section id="schedule" class="schedule-wrapper">
+            <div class="section-title"><h2>מערכת שעות</h2><div class="divider"></div></div>
             <div class="schedule-image-container">
                 <img src="assets/images/schedule.jpg" alt="מערכת שעות סטודיו A-FIT" class="schedule-image">
             </div>
         </section>
 
-        <!-- FAQ Section - FULL CONTENT -->
+        <!-- FAQ Section -->
         <section id="faq">
             <div class="section-title"><h2>שאלות נפוצות</h2><div class="divider"></div></div>
             <div style="max-width: 58rem; margin: 0 auto;">
@@ -612,6 +659,7 @@
                     <div class="input-group"><div class="input-wrapper"><input type="tel" placeholder="טלפון" required></div></div>
                     <button type="submit" class="submit-btn">לאימון היכרות השאירי פרטים</button>
                 </form>
+                <p class="legal-consent">בלחיצה על הכפתור אני מאשרת את <a onclick="openLegal('terms')">תקנון האתר</a> ו<a onclick="openLegal('health')">הצהרת הבריאות</a></p>
             </div>
         </section>
 
@@ -622,45 +670,80 @@
                 <a href="https://wa.me/972526619528" target="_blank" style="color: #fff; font-size: 2.5rem;"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
             <p style="opacity: 0.7;">&copy; 2024 A-FIT Studio. כל הזכויות שמורות לאפיק.</p>
-            <span class="accessibility-link" onclick="document.getElementById('accModal').style.display='block'">הצהרת נגישות</span>
+            
+            <div class="footer-links">
+                <span class="footer-link" onclick="document.getElementById('accModal').style.display='block'">הצהרת נגישות</span>
+                <span class="footer-link" onclick="openLegal('terms')">תקנון ותנאי שימוש</span>
+                <span class="footer-link" onclick="openLegal('privacy')">מדיניות פרטיות</span>
+                <span class="footer-link" onclick="openLegal('health')">הצהרת בריאות</span>
+                <span class="footer-link" onclick="openLegal('cancellation')">ביטולים והחזרים</span>
+            </div>
         </footer>
     </div>
 
-    <!-- Accessibility Modal - SCROLLABLE & TTS INFO -->
+    <!-- Accessibility Modal -->
     <div id="accModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="document.getElementById('accModal').style.display='none'">&times;</span>
             <h2 style="color: var(--primary-purple); margin-bottom: 20px; font-family: 'Bellefair', serif;">הצהרת נגישות - A-FIT Studio</h2>
             
             <div style="font-size: 1.1rem; line-height: 1.6; color: var(--text-dark); text-align: right;">
-                <p style="margin-bottom: 15px;">אנו ב-A-FIT רואים חשיבות רבה במתן שירות שוויוני ונגיש לכלל הגולשות והלקוחות שלנו. האתר הונגש בהתאם להנחיות הנגישות בתקן הישראלי 5568 ברמה AA, המבוסס על הנחיות WCAG 2.0 הבינלאומיות.</p>
-                
-                <h3 style="font-size: 1.3rem; color: var(--primary-purple); margin-bottom: 10px;">פעולות הנגישות שבוצעו באתר:</h3>
-                <ul style="margin-right: 20px; margin-bottom: 20px; list-style-type: disc;">
-                    <li><b>ניווט מקלדת:</b> האתר מותאם לשימוש מלא ללא עכבר באמצעות מקשי ה-Tab וה-Enter.</li>
-                    <li><b>ניגודיות וצבעים:</b> הקפדה על ניגודיות גבוהה בין הטקסט לרקע ואפשרות למצבי ניגודיות גבוהה.</li>
-                    <li><b>תמיכה בקורא מסך:</b> קוד סמנטי המאפשר לתוכנות הקראה להבין את מבנה הדף.</li>
-                    <li><b>כלי עזר מובנים:</b> תפריט נגישות המאפשר הגדלה/הקטנה של טקסט, שינוי גופן וסמן קריאה.</li>
-                    <li><b>עיצוב רספונסיבי:</b> התאמה מלאה למובייל, טאבלט ומחשב.</li>
-                </ul>
-
-                <h3 style="font-size: 1.3rem; color: var(--primary-purple); margin-bottom: 10px;">חשוב לדעת לגבי סמן הקריאה (הקראה קולית):</h3>
-                <p style="margin-bottom: 20px; padding: 10px; background: #f9f0ff; border-right: 4px solid var(--primary-purple);">במידה וסמן הקריאה אינו משמיע קול, יש לבדוק בהגדרות המכשיר או הדפדפן שלכם האם מותקנת חבילת שפה בעברית והאם המכשיר תומך במנוע דיבור (TTS). פעילות הסמן תלויה בקולות המותקנים במערכת ההפעלה שלכם.</p>
-
+                <p style="margin-bottom: 15px;">אנו ב-A-FIT רואים חשיבות רבה במתן שירות שוויוני ונגיש לכלל הגולשות והלקוחות שלנו. האתר הונגש בהתאם להנחיות הנגישות בתקן הישראלי 5568 ברמה AA.</p>
+                <h3 style="font-size: 1.3rem; color: var(--primary-purple); margin-bottom: 10px;">סמן קריאה והקראה קולית:</h3>
+                <p style="margin-bottom: 20px; padding: 10px; background: #f9f0ff; border-right: 4px solid var(--primary-purple);">במידה וסמן הקריאה אינו משמיע קול, יש לבדוק בהגדרות המכשיר או הדפדפן האם מותקנת חבילת שפה בעברית והאם המכשיר תומך במנוע דיבור (TTS).</p>
                 <h3 style="font-size: 1.3rem; color: var(--primary-purple); margin-bottom: 10px;">פרטי רכז הנגישות:</h3>
-                <p>במידה ונתקלת בקושי בגלישה או בשימוש בכלי העזר, נשמח לעמוד לרשותך ולתקן בהקדם.</p>
-                <ul style="list-style: none; margin-top: 10px;">
-                    <li>• <b>שם:</b> אפיק</li>
-                    <li>• <b>טלפון:</b> 052-6619528</li>
-                </ul>
-                <p style="margin-top: 25px; font-size: 0.9rem; opacity: 0.7;">תאריך עדכון ההצהרה: מרץ 2024</p>
+                <ul style="list-style: none;"><li>• <b>שם:</b> אפיק | <b>טלפון:</b> 052-6619528</li></ul>
             </div>
+        </div>
+    </div>
+
+    <!-- Legal Center Modal -->
+    <div id="legalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('legalModal').style.display='none'">&times;</span>
+            <div class="legal-tabs">
+                <button class="tab-btn active" onclick="showTab('terms', this)">תקנון ותנאים</button>
+                <button class="tab-btn" onclick="showTab('privacy', this)">פרטיות וקוקיז</button>
+                <button class="tab-btn" onclick="showTab('cancellation', this)">ביטולים והחזרים</button>
+                <button class="tab-btn" onclick="showTab('health', this)">הצהרת בריאות</button>
+            </div>
+            <div id="legal-content" style="font-size: 1.1rem; line-height: 1.6; color: var(--text-dark); text-align: right;"></div>
         </div>
     </div>
 
     <script>
         function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('active'); }
 
+        // Cookie Banner Logic
+        function acceptCookies() {
+            localStorage.setItem('afit_cookies_accepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+
+        // Accessibility Settings Management
+        function saveAccSetting(key, value) { localStorage.setItem('afit_acc_' + key, value); }
+        function loadAccSettings() {
+            const contrast = localStorage.getItem('afit_acc_contrast');
+            const grayscale = localStorage.getItem('afit_acc_grayscale');
+            const multiplier = localStorage.getItem('afit_acc_multiplier');
+            const links = localStorage.getItem('afit_acc_links');
+            if (contrast === 'true') document.body.classList.add('high-contrast');
+            if (grayscale === 'true') document.body.classList.add('grayscale');
+            if (links === 'true') document.body.classList.add('underline-links');
+            if (multiplier) {
+                currentMultiplier = parseFloat(multiplier);
+                document.documentElement.style.setProperty('--font-multiplier', currentMultiplier);
+            }
+        }
+
+        window.onload = function() {
+            if (!localStorage.getItem('afit_cookies_accepted')) {
+                document.getElementById('cookie-banner').style.display = 'flex';
+            }
+            loadAccSettings();
+        };
+
+        // WhatsApp Form Logic
         document.querySelectorAll('.whatsappForm').forEach(form => {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -670,10 +753,12 @@
             });
         });
 
+        // FAQ Logic
         document.querySelectorAll('.faq-q').forEach(q => {
             q.addEventListener('click', () => { q.parentElement.classList.toggle('active'); });
         });
 
+        /* Accessibility Functions */
         let currentMultiplier = 1;
         let isReadingActive = false;
         let lastReadText = "";
@@ -687,12 +772,12 @@
         loadVoices();
 
         function toggleAccMenu() { document.getElementById('acc-menu').classList.toggle('active'); }
-        function adjustFontSize(val) { currentMultiplier += val; if (currentMultiplier < 0.7) currentMultiplier = 0.7; if (currentMultiplier > 2.5) currentMultiplier = 2.5; document.documentElement.style.setProperty('--font-multiplier', currentMultiplier); }
-        function resetFontSize() { currentMultiplier = 1; document.documentElement.style.setProperty('--font-multiplier', 1); }
+        function adjustFontSize(val) { currentMultiplier += val; if (currentMultiplier < 0.7) currentMultiplier = 0.7; if (currentMultiplier > 2.5) currentMultiplier = 2.5; document.documentElement.style.setProperty('--font-multiplier', currentMultiplier); saveAccSetting('multiplier', currentMultiplier); }
+        function resetFontSize() { currentMultiplier = 1; document.documentElement.style.setProperty('--font-multiplier', 1); saveAccSetting('multiplier', 1); }
         function toggleFontType() { document.body.classList.toggle('alt-font'); }
-        function toggleContrast() { document.body.classList.toggle('high-contrast'); }
-        function toggleGrayscale() { document.body.classList.toggle('grayscale'); }
-        function toggleLinks() { document.body.classList.toggle('underline-links'); }
+        function toggleContrast() { document.body.classList.toggle('high-contrast'); saveAccSetting('contrast', document.body.classList.contains('high-contrast')); }
+        function toggleGrayscale() { document.body.classList.toggle('grayscale'); saveAccSetting('grayscale', document.body.classList.contains('grayscale')); }
+        function toggleLinks() { document.body.classList.toggle('underline-links'); saveAccSetting('links', document.body.classList.contains('underline-links')); }
 
         function toggleReadingGuide() {
             isReadingActive = !isReadingActive;
@@ -704,6 +789,10 @@
         function resetAcc() { 
             resetFontSize(); 
             document.body.classList.remove('high-contrast', 'grayscale', 'underline-links', 'alt-font'); 
+            localStorage.removeItem('afit_acc_contrast');
+            localStorage.removeItem('afit_acc_grayscale');
+            localStorage.removeItem('afit_acc_multiplier');
+            localStorage.removeItem('afit_acc_links');
             if (isReadingActive) toggleReadingGuide();
         }
 
@@ -729,12 +818,44 @@
             window.speechSynthesis.speak(utterance);
         }
 
+        /* Forced Mute for Gallery Videos */
+        document.querySelectorAll('video.force-silent').forEach(video => {
+            video.addEventListener('volumechange', function() {
+                if (!this.muted || this.volume > 0) {
+                    this.muted = true;
+                    this.volume = 0;
+                }
+            });
+        });
+
+        /* Legal Center Logic */
+        const legalData = {
+            terms: `<h2 style="color:var(--primary-purple); margin-bottom:1rem;">📄 תקנון אתר – סטודיו אימונים</h2><p><b>כללי</b><br>השימוש באתר מהווה הסכמה לתנאים המפורטים להלן. אם אינך מסכימה – יש להימנע משימוש באתר.</p><p style="margin-top:1rem;"><b>שירותי הסטודיו</b><br>הסטודיו מציע אימוני כושר קבוצתיים ו/או אישיים. המידע באתר הינו מידע כללי בלבד ואינו מהווה ייעוץ רפואי.</p><p style="margin-top:1rem;"><b>אחריות רפואית</b><br>האימונים מתאימים לאנשים בריאים בלבד. באחריות המתאמנות לוודא כי מצבן הבריאותי מאפשר השתתפות באימון. הסטודיו לא יישא באחריות לפציעות שנגרמו כתוצאה מהשתתפות באימונים.</p><p style="margin-top:1rem;"><b>קניין רוחני</b><br>כל התכנים באתר (טקסטים, סרטונים, תמונות) שייכים לסטודיו ואין לעשות בהם שימוש ללא אישור.</p>`,
+            privacy: `<h2 style="color:var(--primary-purple); margin-bottom:1rem;">🔐 מדיניות פרטיות וקוקיז</h2><p>הסטודיו מכבד את פרטיות המשתמשות ופועל בהתאם לחוק הגנת הפרטיות. המידע נשמר בצורה מאובטחת ולא מועבר לצד שלישי ללא אישור.</p><p style="margin-top:1rem;"><b>🍪 קוקיז</b><br>האתר עשוי להשתמש בקוקיז לצורך שיפור חוויית המשתמש וסטטיסטיקות (כמו גוגל אנליטיקס). המשך שימוש באתר מהווה הסכמה לכך.</p>`,
+            cancellation: `<h2 style="color:var(--primary-purple); margin-bottom:1rem;">💳 מדיניות ביטולים והחזרים</h2><ul style="margin-right:20px;"><li>ניתן לבטל אימון עד <b>12 שעות</b> מראש.</li><li>ביטול מאוחר או אי הגעה יחויבו במלוא העלות.</li><li>ביטול מנוי הינו בהתראה של <b>30 ימים</b> מראש.</li></ul>`,
+            health: `<h2 style="color:var(--primary-purple); margin-bottom:1rem;">⚖️ הצהרת בריאות</h2><p><b>חשוב:</b> בעת הרשמה לאימון והגעה לסטודיו, המשתתפות נדרשות לחתום על הצהרת בריאות פיזית. במידה וקיים מצב רפואי קודם, הריון או פציעה כרונית, יש לדווח על כך למאמנת.</p>`
+        };
+
+        function openLegal(tab) {
+            document.getElementById('legalModal').style.display = 'block';
+            showTab(tab, document.querySelector(`.tab-btn[onclick*="${tab}"]`));
+        }
+
+        function showTab(tabName, btn) {
+            document.getElementById('legal-content').innerHTML = legalData[tabName];
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+        }
+
         document.querySelectorAll('.media-item video').forEach(video => {
             video.addEventListener('play', function() { this.closest('.media-item').classList.add('playing'); });
             video.addEventListener('pause', function() { this.closest('.media-item').classList.remove('playing'); });
         });
 
-        window.onclick = function(event) { if (event.target == document.getElementById('accModal')) { document.getElementById('accModal').style.display = "none"; } }
+        window.onclick = function(event) { 
+            if (event.target == document.getElementById('accModal')) { document.getElementById('accModal').style.display = "none"; }
+            if (event.target == document.getElementById('legalModal')) { document.getElementById('legalModal').style.display = "none"; }
+        }
     </script>
 </body>
 </html>
